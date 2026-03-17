@@ -1,0 +1,8 @@
+export { HeroBlock } from './HeroBlock'
+export { StatsBento } from './StatsBento'
+export { CompareStrip } from './CompareStrip'
+export { FeaturedEvents } from './FeaturedEvents'
+export { HowItWorks } from './HowItWorks'
+export { WhyUs } from './WhyUs'
+export { FAQBlock } from './FAQBlock'
+export { CTABlock } from './CTABlock'

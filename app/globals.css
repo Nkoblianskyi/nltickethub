@@ -1,0 +1,219 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+/* nltickethub – new design system: bold blocks, soft curves, clear hierarchy */
+:root {
+  --primary: #0f2847;
+  --primary-deep: #0a1c33;
+  --primary-light: #1a3a5c;
+  --primary-foreground: #f8f6f0;
+  --accent: #c9940e;
+  --accent-light: #e0a80f;
+  --accent-warm: #e8b82a;
+  --accent-muted: #f4e9cc;
+  --surface: #1e3654;
+  --surface-light: #2d4a6d;
+  --background: #f8f6f0;
+  --background-warm: #f0ede4;
+  --foreground: #0f2847;
+  --card: #ffffff;
+  --card-foreground: #0f2847;
+  --popover: #ffffff;
+  --popover-foreground: #0f2847;
+  --secondary: #4a5d7a;
+  --secondary-foreground: #ffffff;
+  --muted: #e6e2d9;
+  --muted-foreground: #4a5d7a;
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: #fff;
+  --border: #d9d4c8;
+  --input: #d9d4c8;
+  --ring: #0f2847;
+  --radius: 0.75rem;
+  --radius-card: 1.25rem;
+  --radius-pill: 9999px;
+  --earth: #5c4a3d;
+  --earth-light: #7a6354;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #0f2847;
+  --sidebar-primary: #0f2847;
+  --sidebar-primary-foreground: #f8f6f0;
+  --sidebar-accent: #f8f6f0;
+  --sidebar-accent-foreground: #0f2847;
+  --sidebar-border: #d9d4c8;
+  --sidebar-ring: #0f2847;
+  --chart-1: #c9940e;
+  --chart-2: #0f2847;
+  --chart-3: #4a5d7a;
+  --chart-4: #5c4a3d;
+  --chart-5: #1e3654;
+  --shadow-card: 0 4px 20px rgba(15, 40, 71, 0.08);
+  --shadow-card-hover: 0 12px 40px rgba(15, 40, 71, 0.12);
+}
+
+.dark {
+  --background: #0a0e14;
+  --foreground: #f8f6f0;
+  --card: #131a24;
+  --card-foreground: #f8f6f0;
+  --popover: #131a24;
+  --popover-foreground: #f8f6f0;
+  --primary: #e8e2d6;
+  --primary-foreground: #0f2847;
+  --secondary: #1e3654;
+  --secondary-foreground: #f8f6f0;
+  --muted: #1e3654;
+  --muted-foreground: #9ca8b8;
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: #f8f6f0;
+  --border: #2d3d52;
+  --input: #2d3d52;
+  --ring: #e0a80f;
+  --sidebar: #131a24;
+  --sidebar-foreground: #f8f6f0;
+  --sidebar-primary: #c9940e;
+  --sidebar-primary-foreground: #0f2847;
+  --sidebar-accent: #1e3654;
+  --sidebar-accent-foreground: #f8f6f0;
+  --sidebar-border: #2d3d52;
+  --sidebar-ring: #e0a80f;
+  --chart-1: #e0a80f;
+  --chart-2: #4a5d7a;
+  --chart-3: #7a6354;
+  --chart-4: #c9940e;
+  --chart-5: #2d4a6d;
+}
+
+@theme inline {
+  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
+  --font-serif: var(--font-source-serif), Georgia, serif;
+  --font-mono: ui-monospace, monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--primary);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-earth: var(--earth);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: var(--radius);
+  --radius-lg: var(--radius-card);
+  --radius-xl: calc(var(--radius-card) + 8px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* New section styles – block-based, no diagonals */
+.section-wave-top {
+  clip-path: ellipse(120% 100% at 50% 0%);
+}
+.section-wave-bottom {
+  clip-path: ellipse(120% 100% at 50% 100%);
+}
+.section-block {
+  border-radius: 0;
+}
+.section-rounded-top {
+  border-radius: var(--radius-card) var(--radius-card) 0 0;
+}
+.section-rounded-bottom {
+  border-radius: 0 0 var(--radius-card) var(--radius-card);
+}
+
+/* New card styles */
+.card-soft {
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+.card-soft:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+.card-pill-top {
+  border-radius: var(--radius-pill) var(--radius-pill) var(--radius-card) var(--radius-card);
+}
+.img-cut-bottom {
+  border-radius: var(--radius-card) var(--radius-card) 0 0;
+  overflow: hidden;
+}
+
+/* Subtle patterns */
+.bg-pattern-dots {
+  background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.bg-pattern-grid {
+  background-image: linear-gradient(to right, currentColor 1px, transparent 1px),
+    linear-gradient(to bottom, currentColor 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.bg-gradient-hero {
+  background: linear-gradient(160deg, var(--primary-deep) 0%, var(--primary) 40%, var(--primary-light) 100%);
+}
+.bg-gradient-footer {
+  background: linear-gradient(180deg, var(--primary) 0%, var(--primary-deep) 100%);
+}
+.bg-stripe-subtle {
+  background: repeating-linear-gradient(
+    -35deg,
+    transparent,
+    transparent 8px,
+    rgba(15, 40, 71, 0.025) 8px,
+    rgba(15, 40, 71, 0.025) 16px
+  );
+}
+.bg-stripe-accent {
+  background: repeating-linear-gradient(
+    95deg,
+    transparent,
+    transparent 10px,
+    rgba(201, 148, 14, 0.04) 10px,
+    rgba(201, 148, 14, 0.04) 20px
+  );
+}
+
+.font-serif {
+  font-family: var(--font-serif), Georgia, serif;
+}
+
+/* Hero – minimal pattern */
+.hero-pattern {
+  background-image:
+    radial-gradient(2px 2px at 24px 40px, rgba(255,255,255,0.12), transparent),
+    radial-gradient(2px 2px at 80px 120px, rgba(224, 168, 15, 0.08), transparent);
+  background-size: 160px 160px;
+}
