@@ -19,13 +19,13 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-xl border-b border-border shadow-sm">
+    <header className="sticky top-0 z-50 bg-card/98 backdrop-blur-md border-b-2 border-border/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-18 min-h-[4.5rem] gap-6">
+        <div className="flex items-center justify-between h-16 md:h-18 min-h-16 gap-4">
           <Logo variant="header" href="/" />
 
           <nav
-            className="hidden md:flex flex-1 justify-center items-center gap-1"
+            className="hidden md:flex flex-1 justify-center items-center gap-0.5"
             aria-label="Hoofdmenu"
           >
             {navLinks.map((link) => (
@@ -33,27 +33,28 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'px-4 py-2.5 text-sm font-medium rounded-[var(--radius)] transition-all',
-                  pathname === link.href
-                    ? 'bg-primary text-primary-foreground'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                  'relative px-5 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground',
+                  pathname === link.href && 'text-foreground'
                 )}
               >
                 {link.label}
+                {pathname === link.href && (
+                  <span className="absolute bottom-0 left-4 right-4 h-0.5 rounded-full bg-accent" aria-hidden />
+                )}
               </Link>
             ))}
           </nav>
 
-          <div className="flex items-center gap-3 shrink-0">
+          <div className="flex items-center gap-2 shrink-0">
             <Link
               href="/evenementen"
-              className="hidden sm:inline-flex items-center gap-2 bg-primary text-primary-foreground text-sm font-semibold px-5 py-2.5 rounded-[var(--radius-pill)] hover:opacity-90 transition-opacity"
+              className="hidden sm:inline-flex items-center gap-2 border-2 border-primary text-primary text-sm font-semibold px-4 py-2 rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors"
             >
               <Search className="w-4 h-4" aria-hidden="true" />
               Zoeken
             </Link>
             <button
-              className="md:hidden p-2.5 text-muted-foreground rounded-[var(--radius)] hover:bg-muted transition-colors"
+              className="md:hidden p-2.5 text-foreground rounded-lg hover:bg-muted transition-colors"
               onClick={() => setMobileOpen((v) => !v)}
               aria-label={mobileOpen ? 'Menu sluiten' : 'Menu openen'}
               aria-expanded={mobileOpen}
@@ -66,21 +67,21 @@ export function Header() {
 
       {mobileOpen && (
         <div
-          className="md:hidden absolute top-full left-0 right-0 bg-card border-t border-border shadow-lg py-4 px-4 section-rounded-bottom"
+          className="md:hidden absolute top-full left-0 right-0 bg-card border-t border-border py-4 px-4"
           role="navigation"
           aria-label="Mobiel menu"
         >
-          <nav className="flex flex-col gap-1">
+          <nav className="flex flex-col gap-0.5">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
                 className={cn(
-                  'px-4 py-3 rounded-[var(--radius)] text-sm font-medium transition-colors',
+                  'px-4 py-3 text-sm font-medium rounded-lg transition-colors',
                   pathname === link.href
                     ? 'bg-accent-muted text-foreground'
-                    : 'text-muted-foreground hover:bg-muted'
+                    : 'text-muted-foreground hover:bg-muted hover:text-foreground'
                 )}
               >
                 {link.label}
@@ -89,7 +90,7 @@ export function Header() {
             <Link
               href="/evenementen"
               onClick={() => setMobileOpen(false)}
-              className="mt-2 mx-4 flex items-center justify-center gap-2 bg-primary text-primary-foreground font-semibold text-sm px-4 py-3 rounded-[var(--radius-pill)]"
+              className="mt-3 mx-4 flex items-center justify-center gap-2 border-2 border-primary text-primary font-semibold text-sm px-4 py-3 rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors"
             >
               <Search className="w-4 h-4" aria-hidden="true" />
               Kaartjes zoeken

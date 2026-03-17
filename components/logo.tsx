@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import { cn } from '@/lib/utils'
 
 type LogoVariant = 'header' | 'footer'
 
@@ -14,19 +15,28 @@ interface LogoProps {
 
 export function Logo({ variant = 'header', className = '', href = '/', showWordmark = true }: LogoProps) {
   const isFooter = variant === 'footer'
+  const base = isFooter ? 'text-primary-foreground' : 'text-foreground'
+  const accent = isFooter ? 'text-accent-warm' : 'text-accent'
 
   const content = (
     <>
-      <Image src="/favicon.ico" width={40} height={40} alt="Logo" />
+      <span className={cn(
+        'relative flex h-9 w-9 shrink-0 items-center justify-center rounded-lg',
+        isFooter ? 'bg-white/15' : 'bg-primary'
+      )}>
+        <Image src="/favicon.ico" width={24} height={24} alt="" className="object-contain" />
+      </span>
       {showWordmark && (
-        <span className={`font-serif font-bold text-lg sm:text-xl tracking-tight ${isFooter ? 'text-primary-foreground' : 'text-foreground'}`}>
-          nl<span className={isFooter ? 'text-accent-light' : 'text-accent'}>ticket</span>hub
+        <span className={`inline-flex items-baseline gap-0.5 font-sans text-xl font-semibold tracking-tight sm:text-2xl ${base}`}>
+          <span className="font-normal opacity-90">nl</span>
+          <span className={`font-bold ${accent}`}>ticket</span>
+          <span className="font-bold">hub</span>
         </span>
       )}
     </>
   )
 
-  const wrapClassName = `flex items-center gap-2 shrink-0 ${className}`
+  const wrapClassName = `flex items-center gap-3 shrink-0 ${className}`
 
   if (href) {
     return (

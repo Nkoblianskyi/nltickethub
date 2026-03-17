@@ -62,7 +62,7 @@ export const events: Event[] = [
     time: '20:00',
     venue: 'Ziggo Dome',
     city: 'Amsterdam',
-    image: '/Radical_Optimism_Tour_Poster.webp',
+    image: '/Gloria_World_Tour.jpeg',
     description: 'Gloria Tour: Sam Smith live in de Ziggo Dome met soul, pop en de grootste hits. Een avond vol emotie en stemmige productie.',
     featured: true,
     offers: [
